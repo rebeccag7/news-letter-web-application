@@ -4,12 +4,15 @@ const morgan = require('morgan');
 const request = require('request');
 const async = require('async');
 
-
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(morgan('dev'));
+
+app.get('/', (req, res, next) => {
+	res.json("Hello world");
+});
 
 app.listen(3000, (err) => {
 	if (err) {
@@ -17,4 +20,4 @@ app.listen(3000, (err) => {
 	} else {
 		console.log("Running on port 3000");
 	}
-})
+});
